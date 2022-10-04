@@ -6,6 +6,7 @@ package sweng;
  */
 public class App 
 {
+  //test for merge
     public static void main(String[] args) {
         System.out.println(sum(1,2));
         System.out.println(evaluate("2+3+4"));
