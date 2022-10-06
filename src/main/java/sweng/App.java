@@ -44,7 +44,7 @@ public class App {
                 postfix.append(c);
             } else if (isOperator(c)) {
                 postfix.append(' ');
-                while (!stack.isEmpty() && c >= stack.peek()) { //while stack has higher precedence operators
+                while (!stack.isEmpty() && precedence(c) <= precedence(stack.peek())) { //while stack has higher precedence operators 41,42,45
                     postfix.append(stack.pop());
                     postfix.append(' ');
                 }
@@ -57,6 +57,10 @@ public class App {
             postfix.append(' ');
         }
         return postfix.toString();
+    }
+    public static int precedence(char c){
+        if (c == '+' | c == '-' ) return 1;
+        else return 2;
     }
     public static String evaluatePostfix(String postfix){
         Stack<Integer> stack = new Stack<>();
