@@ -1,4 +1,4 @@
-package src.main.java.sweng;
+package sweng;
 import java.util.Scanner;
 import java.util.Stack;
 
