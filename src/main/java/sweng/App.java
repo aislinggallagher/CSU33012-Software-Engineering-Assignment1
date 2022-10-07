@@ -12,11 +12,12 @@ public class App {
             if (isValid(expression)) {
                 String postfix = convertToPostfix(expression);
                 System.out.println("The expression evaluates to: " + evaluatePostfix(postfix));
-            } else {
+            } else if (expression.equals("exit")) {
+                exit = true;
+            }
+            else {
                 System.out.println("Invalid expression to evaluate");
-                System.out.println("Type 'exit' if you would like to leave the calculator, if not press enter: ");
-                String s = input.next();
-                if (s.equalsIgnoreCase("exit")) exit = true;
+                System.out.println("Type 'exit' if you would like to leave the calculator, if not enter a string ");
             }
         }
     }
