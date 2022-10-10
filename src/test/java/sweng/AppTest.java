@@ -19,6 +19,11 @@ public class AppTest
         assertEquals(false, valid);
     }
     @Test
+    public void isValidTestFalseTwo() {
+        boolean valid = App.isValid("1+5*3@4");
+        assertEquals(false, valid);
+    }
+    @Test
     public void convertToPostfixTest() {
         String postfix = App.convertToPostfix("2+3+4");
         String correctPostfix = "2 3 + 4 + ";
@@ -30,9 +35,16 @@ public class AppTest
         String correctPostfix = "2 3 * 4 - ";
         assertEquals(correctPostfix, postfix);
     }
+    @Test
     public void convertToPostfixTestThree() {
         String postfix = App.convertToPostfix("2*3-4-0-3-5+2+10*20-4*100*10000");
         String correctPostfix = "2 3 * 4 - 0 - 3 - 5 - 2 + 10 20 * + 4 100 * 10000 * - ";
+        assertEquals(correctPostfix, postfix);
+    }
+    @Test
+    public void convertToPostfixTestFour() {
+        String postfix = App.convertToPostfix("5*3+2-5+2");
+        String correctPostfix = "5 3 * 2 + 5 - 2 + ";
         assertEquals(correctPostfix, postfix);
     }
     @Test
@@ -45,6 +57,18 @@ public class AppTest
     public void evalPostfixTestTwo() {
         String result = App.evaluatePostfix("2 3 * 4 - 0 - 3 - 5 - 2 + 10 20 * + 4 100 * 10000 * - ");
         String correct = "-3999804";
+        assertEquals(correct, result);
+    }
+    @Test
+    public void evalPostfixTestThree() {
+        String result = App.evaluatePostfix("5 3 * 2 + 5 - 2 + ");
+        String correct = "14";
+        assertEquals(correct, result);
+    }
+    @Test
+    public void evalPostfixTestFour() {
+        String result = App.evaluatePostfix("5 7 2 * + 6 - 2 - ");
+        String correct = "11";
         assertEquals(correct, result);
     }
     @ParameterizedTest
