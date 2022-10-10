@@ -89,7 +89,7 @@ public class App {
         return Integer.toString(stack.pop());
     }
     public static boolean isOperator(char c) {
-        if (c == '+' | c == '-' | c == '*') return true;
+        if (c == '+' || c == '-' || c == '*') return true;
         else return false;
     }
 }
