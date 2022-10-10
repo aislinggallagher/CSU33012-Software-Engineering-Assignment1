@@ -2,6 +2,8 @@ package sweng;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
  
 public class AppTest 
 {
@@ -23,15 +25,43 @@ public class AppTest
         assertEquals(correctPostfix, postfix);
     }
     @Test
+    public void convertToPostfixTestTwo() {
+        String postfix = App.convertToPostfix("2*3-4");
+        String correctPostfix = "2 3 * 4 - ";
+        assertEquals(correctPostfix, postfix);
+    }
+    public void convertToPostfixTestThree() {
+        String postfix = App.convertToPostfix("2*3-4-0-3-5+2+10*20-4*100*10000");
+        String correctPostfix = "2 3 * 4 - 0 - 3 - 5 - 2 + 10 20 * + 4 100 * 10000 * - ";
+        assertEquals(correctPostfix, postfix);
+    }
+    @Test
     public void evalPostfixTest() {
         String result = App.evaluatePostfix("2 3 + 4 +");
         String correct = "9";
         assertEquals(correct, result);
     }
     @Test
-    public void isOperatorTest() {
-        boolean result = App.isOperator('+');
+    public void evalPostfixTestTwo() {
+        String result = App.evaluatePostfix("2 3 * 4 - 0 - 3 - 5 - 2 + 10 20 * + 4 100 * 10000 * - ");
+        String correct = "-3999804";
+        assertEquals(correct, result);
+    }
+    @ParameterizedTest
+    @ValueSource(chars = {'+', '-', '*'})
+    public void isOperatorTest(char input) {
+        boolean result = App.isOperator(input);
         assertEquals(true, result);
+    }
+    @Test
+    public void isOperatorTestFalse() {
+        boolean result = App.isOperator('h');
+        assertEquals(false, result);
+    }
+    @Test
+    public void isOperatorTestFalseAgain() {
+        boolean result = App.isOperator('3');
+        assertEquals(false, result);
     }
 }
 
